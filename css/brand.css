@@ -1,0 +1,153 @@
+/* ==========================================================================
+   DuRGA Capital — brand tokens and logo components
+   Drop this in, then use .durga-lockup / .durga-lockup--stacked for the logo.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap");
+
+:root {
+  /* --- Colour ------------------------------------------------------------ */
+  --durga-gold:          #D4A574;  /* Saffron Gold   — light grounds, reversed marks */
+  --durga-gold-deep:     #C89968;  /* Deep Gold      — the mark's light plane on white */
+  --durga-copper:        #704214;  /* Burnished Copper — the mark's shadow plane, the "u" */
+  --durga-copper-light:  #9C6B33;  /* shadow plane on dark grounds */
+  --durga-navy:          #1A1A2E;  /* Fort Navy      — primary ink, dark grounds */
+  --durga-slate:         #2C3E50;  /* Slate          — secondary text */
+  --durga-ivory:         #F7F4EF;  /* Ivory          — warm page ground */
+
+  /* Supporting greys — these pass 4.5:1, do not lighten them for body text */
+  --durga-rule:          #E3DDD3;  /* hairlines on light */
+  --durga-rule-dark:     #46436B;  /* hairlines on navy */
+  --durga-muted:         #6E665C;  /* captions on light  (5.2:1 on ivory) */
+  --durga-muted-dark:    #B8B3C2;  /* captions on navy   (8.4:1 on navy)  */
+  --durga-body:          #4A443C;  /* body copy on light */
+
+  /* --- Type -------------------------------------------------------------- */
+  --durga-font-display: "Jost", "Futura", "Century Gothic", sans-serif;
+  --durga-font-body:    "Newsreader", Georgia, "Times New Roman", serif;
+
+  /* --- Logo ------------------------------------------------------------- */
+  --durga-logo-size: 48px;   /* wordmark cap size; the mark scales off it     */
+  --durga-logo-ink:  var(--durga-navy);
+  --durga-logo-u:    var(--durga-copper);
+  --durga-logo-sub:  var(--durga-slate);
+}
+
+/* ==========================================================================
+   Logo lockups
+   Markup lives in logo-snippets.html — copy it from there.
+   Minimum --durga-logo-size is 26px; below that use the mark on its own.
+   ========================================================================== */
+
+.durga-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--durga-logo-size) * 0.54);
+  font-family: var(--durga-font-display);
+  line-height: 1;
+}
+
+.durga-lockup--stacked {
+  flex-direction: column;
+  gap: calc(var(--durga-logo-size) * 0.4);
+}
+
+.durga-lockup__mark {
+  width: calc(var(--durga-logo-size) * 1.73);
+  height: calc(var(--durga-logo-size) * 1.73);
+  flex-shrink: 0;
+  display: block;
+}
+
+.durga-lockup__text {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;      /* lets CAPITAL justify to the width of DuRGA */
+  gap: calc(var(--durga-logo-size) * 0.17);
+}
+
+.durga-wordmark {
+  font-size: var(--durga-logo-size);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 0.84;
+  color: var(--durga-logo-ink);
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* The lowercase u is deliberate — never set it as a capital. */
+.durga-wordmark__u {
+  font-weight: 600;
+  color: var(--durga-logo-u);
+}
+
+/* CAPITAL is justified across the exact width of DuRGA. The trailing
+   letter-space of the wordmark is compensated by the padding below. */
+.durga-subtitle {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 0.05em;
+  font-size: calc(var(--durga-logo-size) * 0.2);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--durga-logo-sub);
+}
+
+/* --- Reversed, for navy / slate / copper grounds ------------------------- */
+.durga-lockup--reversed {
+  --durga-logo-ink: var(--durga-ivory);
+  --durga-logo-u:   var(--durga-gold);
+  --durga-logo-sub: var(--durga-muted-dark);
+}
+
+/* --- Single colour, for print, foil, embroidery, fax --------------------- */
+.durga-lockup--mono {
+  --durga-logo-u: currentColor;
+  --durga-logo-ink: currentColor;
+  --durga-logo-sub: currentColor;
+  color: var(--durga-navy);
+}
+
+/* ==========================================================================
+   Clearspace
+   Half the mark's height on all four sides. Nothing enters this box.
+   ========================================================================== */
+.durga-lockup { margin: calc(var(--durga-logo-size) * 0.87); }
+.durga-lockup--flush { margin: 0; }
+
+/* ==========================================================================
+   Page defaults — optional, delete if your site already sets these
+   ========================================================================== */
+.durga-page {
+  background: var(--durga-ivory);
+  color: var(--durga-body);
+  font-family: var(--durga-font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+.durga-page h1,
+.durga-page h2,
+.durga-page h3 {
+  font-family: var(--durga-font-display);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--durga-navy);
+}
+
+.durga-page p,
+.durga-prose {
+  font-family: var(--durga-font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--durga-body);
+}
+
+.durga-eyebrow {
+  font-family: var(--durga-font-display);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--durga-muted);
+}

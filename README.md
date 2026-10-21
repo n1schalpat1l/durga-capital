@@ -53,6 +53,16 @@ text. Phone links are already live (`tel:+919049700500`, `tel:+919860912043`).
 Original renders and plan PDFs live in `../source/`, outside the deployed folder.
 Renders are captioned "Artist's impression" wherever they appear.
 
+## Deploy
+
+This folder is its own git repo, published by GitHub Pages from `main`:
+https://n1schalpat1l.github.io/durga-capital/ (repo `n1schalpat1l/durga-capital`).
+To update, commit and `git push`; the site rebuilds in about a minute.
+`.nojekyll` makes Pages serve the files as they are.
+
+While it is a preview, every page carries `<meta name="robots" content="noindex">`.
+Remove it from each page at launch.
+
 ## Performance
 
 The homepage budget is 200KB. It currently transfers about 165KB with gzip.
